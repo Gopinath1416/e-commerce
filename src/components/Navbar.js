@@ -77,12 +77,20 @@ function NavigationBar({ cartCount }) {
               Products
             </Nav.Link>
 
-            <Nav.Link href="#">
-              About
+            <Nav.Link
+                as={Link}
+                to="/about"
+                onClick={() => setExpanded(false)}
+            >
+                About
             </Nav.Link>
 
-            <Nav.Link href="#">
-              Contact
+            <Nav.Link
+                as={Link}
+                to="/contact"
+                onClick={() => setExpanded(false)}
+            >
+                Contact
             </Nav.Link>
 
           </Nav>

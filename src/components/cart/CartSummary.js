@@ -1,5 +1,5 @@
 import { Card, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CartSummary({
 
@@ -9,7 +9,7 @@ function CartSummary({
 
 }) {
 
-    const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
 
     return (
 
@@ -48,22 +48,12 @@ function CartSummary({
                 <Button
                     variant="warning"
                     size="lg"
-                    onClick={() => setSuccess(true)}
+                    onClick={() => navigate("/checkout")}
                 >
 
                     Proceed to Checkout
 
                 </Button>
-
-                {success && (
-
-                <div className="alert alert-success mt-3">
-
-                    🎉 Order placed successfully!
-
-                </div>
-
-                )}
 
             </div>
 

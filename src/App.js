@@ -8,10 +8,39 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Checkout from "./pages/Checkout";
+import OrderSummary from "./pages/OrderSummary";
+import Payment from "./pages/Payment";
+import OrderSuccess from "./pages/OrderSuccess";
+import Orders from "./pages/Orders";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import BackToTop from "./components/BackToTop";
+import { useState, useEffect } from "react";
+import Loader from "./components/Loader";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+
+    const timer = setTimeout(() => {
+
+        setLoading(false);
+
+    }, 1500);
+
+    return () => clearTimeout(timer);
+
+}, []);
 
   return (
+
+    loading ?
+
+    <Loader />
+
+    :
 
     <BrowserRouter>
 
@@ -22,6 +51,33 @@ function App() {
         <Route path="/products" element={<Products />} />
 
         <Route path="/product/:id" element={<ProductDetails />} />
+
+        <Route path="/checkout" element={<Checkout />} />
+
+        <Route path="/payment" element={<Payment />} />
+
+        <Route path="/about" element={<About />} />
+
+        <Route path="/contact" element={<Contact />} />
+
+        <Route
+        path="/order-success"
+        element={<OrderSuccess />}
+        />
+
+        <Route
+        path="/orders"
+        element={<Orders />}
+        />
+
+        <Route
+        path="/orders/:id"
+        element={
+        <h1 className="text-center mt-5">
+        Order Details Coming Soon...
+        </h1>
+        }
+        />
 
         <Route
             path="/cart"
@@ -45,7 +101,14 @@ function App() {
             }
         />
 
+        <Route
+        path="/order-summary"
+        element={<OrderSummary />}
+        />
+
       </Routes>
+
+      <BackToTop />
 
     </BrowserRouter>
 
